@@ -1,0 +1,133 @@
+<!-- References :  -->
+<!-- http://bl.ocks.org/jonahwilliams/2f16643b999ada7b1909 -->
+<!-- https://bl.ocks.org/saraquigley/fff2204cde6fa769696ef143273560ec -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Bar Chart (Top 30)</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <style type="text/css">
+      rect:hover {
+        fill: #fddb27ff;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      var margin = { top: 80, right: 180, bottom: 80, left: 180 },
+        width = 960 - margin.left - margin.right,
+        height = 500 - margin.top - margin.bottom;
+
+      var svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      // set the ranges
+      var yScale = d3.scaleBand().range([height, 0]).padding(0.1);
+
+      var xScale = d3.scaleLinear().range([0, width]);
+
+      d3.tsv("Datasets/stat_30.tsv").then(function (data) {
+        var elements = Object.keys(data[0]).filter(function (d) {
+          return d != "Name";
+        });
+        var selection = elements[0]; //0-6
+
+        //Adding domain to X and Y Scale
+        xScale.domain([
+          0,
+          d3.max(data, function (d) {
+            return +d[selection];
+          }),
+        ]);
+
+        yScale.domain(
+          data.map(function (d) {
+            return d.Name;
+          })
+        );
+
+        //Adding X Axis
+        svg
+          .append("g")
+          .attr("transform", "translate(0,-20)")
+          .call(d3.axisBottom(xScale));
+
+        //X axis label
+        var text = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", 235)
+          .attr("y", -30)
+          .attr("text-anchor", "start")
+          .text(function (d) {
+            return "Category : " + selection;
+          });
+
+        //Adding Y Axis
+        svg
+          .append("g")
+          .call(d3.axisLeft(yScale))
+          .attr("transform", "translate(0,10)");
+
+        //Y axis label
+        svg
+          .append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("y", 0)
+          .attr("x", -20)
+          .attr("dy", ".75em")
+          .text("Character")
+          .attr("transform", "translate(-5,-19)");
+
+        // append the rectangles for the bar chart
+        svg
+          .selectAll(".bar")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar")
+          .attr("fill", "#00B1D2FF")
+          .attr("width", function (d) {
+            return xScale(+d[selection]);
+          })
+          .attr("y", function (d) {
+            return yScale(d.Name);
+          })
+          .attr("height", yScale.bandwidth())
+          .attr("transform", "translate(0,8)")
+          .append("title")
+          .text(function (d) {
+            return d.Name + " : " + d[selection];
+          });
+      });
+
+      function update(variable) {
+        d3.selectAll(".bar").attr("width", function (d) {
+          return xScale(+d[variable]);
+        });
+
+        d3.selectAll(".text").text(function (d) {
+          return "Category : " + variable;
+        });
+      }
+    </script>
+    <div id="toggle">
+      <button onclick="update('Intelligence')">Intelligence</button>
+      <button onclick="update('Speed')">Speed</button>
+      <button onclick="update('Power')">Power</button>
+      <button onclick="update('Strength')">Strength</button>
+      <button onclick="update('Durability')">Durability</button>
+      <button onclick="update('Combat')">Combat</button>
+      <button onclick="update('Overall')">Overall</button>
+    </div>
+  </body>
+</html>
