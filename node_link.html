@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interactive Node Link</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // set the dimensions and margins of the graph
+      var margin = { top: 150, right: 20, bottom: 30, left: 150 },
+        width = 850 - margin.left - margin.right,
+        height = 8000 - margin.top - margin.bottom;
+
+      var svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var simulation = d3
+        .forceSimulation()
+        .force(
+          "link",
+          d3
+            .forceLink()
+            .id(function (d) {
+              return d.id;
+            })
+            .distance(40)
+        )
+        .force("charge", d3.forceManyBody().strength([-200]).distanceMax([500]))
+        .force("x", d3.forceX(width / 2))
+        .force("y", d3.forceY(height / 2));
+
+      d3.json("Datasets/node_link.json").then(function (data) {
+        // simulation.nodes(data.nodes);
+        // simulation.force("link").links(data.links);
+        // link = link
+        //   .data(data.links)
+        //   .enter()
+        //   .append("line")
+        //   .attr("class", "link");
+        // node = node
+        //   .data(data.nodes)
+        //   .enter()
+        //   .append("circle")
+        //   .attr("class", "node")
+        //   .attr("r", 6)
+        //   .style("fill", function (d) {
+        //     return d.id;
+        //   });
+      });
+    </script>
+  </body>
+</html>

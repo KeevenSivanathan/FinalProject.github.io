@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heatmap</title>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="https://d3js.org/d3-color.v2.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+  </head>
+  <body>
+    <script>
+      // set the dimensions and margins of the graph
+      var margin = { top: 50, right: 20, bottom: 50, left: 150 },
+        width = 1000 - margin.left - margin.right,
+        height = 6000 - margin.top - margin.bottom;
+
+      var svg = d3
+        .select("body")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+      var xScale = d3.scaleLinear().range([0, width]);
+      var yScale = d3.scaleBand().range([height, 0]);
+
+      d3.csv("Datasets/powers.csv").then(function (data) {
+        //Adding domain to X and Y Scale
+        xScale.domain([
+          0,
+          d3.max(data, function (d) {
+            return +d["count"];
+          }),
+        ]);
+
+        yScale.domain(
+          data.map(function (d) {
+            return d["power"];
+          })
+        );
+
+        //Adding X Axis
+        svg
+          .append("g")
+          .attr("transform", "translate(5,-20)")
+          .call(d3.axisBottom(xScale));
+
+        //X axis label
+        var text = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", 235)
+          .attr("y", -30)
+          .attr("text-anchor", "start")
+          .text("Count");
+
+        //Adding Y Axis
+        svg
+          .append("g")
+          .call(d3.axisLeft(yScale))
+          .attr("transform", "translate(0,10)");
+
+        //Y axis label
+        svg
+          .append("text")
+          .attr("class", "y label")
+          .attr("text-anchor", "end")
+          .attr("y", 0)
+          .attr("x", -20)
+          .attr("dy", ".75em")
+          .text("Power")
+          .attr("transform", "translate(-5,-19)");
+
+        var colorScale = d3
+          .scaleSequential(d3.interpolateReds)
+          .domain(d3.extent(data, (d) => +d["count"]));
+
+        const cellSize = 20;
+
+        svg
+          .selectAll("rect")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("width", cellSize)
+          .attr("height", cellSize)
+          .attr("x", (d) => xScale(+d["count"]))
+          //put the cells on top of the y increments to prevent x-axis labels overlapping
+          .attr("y", (d) => yScale(d.power) - cellSize)
+          .attr("transform", "translate(0,30)")
+          //set colors based on tuition
+          .attr("fill", (d) => colorScale(+d["count"]))
+          .style("stroke", "black");
+      });
+    </script>
+  </body>
+</html>

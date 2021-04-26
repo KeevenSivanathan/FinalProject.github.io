@@ -1,0 +1,148 @@
+{
+  "nodes": [
+  {
+    "id": "LeTonya Charles (New Earth)"
+  },
+  {
+    "id": "Moloka Dar (Earth-616)"
+  },
+  {
+    "id": "Marcia Long (New Earth)"
+  },
+  {
+    "id": "Jamal Stuart (New Earth)"
+  },
+  {
+    "id": "Tom Orzechowski (Earth-616)"
+  },
+  {
+    "id": "Briquette (Earth-616)"
+  },
+  {
+    "id": "Quirt (Earth-616)"
+  },
+  {
+    "id": "Theodore Knight (New Earth)"
+  },
+  {
+    "id": "Seraph (New Earth)"
+  },
+  {
+    "id": "Arrakhat (New Earth)"
+  },
+  {
+    "id": "Efrain Normas (Earth-616)"
+  },
+  {
+    "id": "Kalya (Earth-616)"
+  },
+  {
+    "id": "Enya Wazzo (New Earth)"
+  },
+  {
+    "id": "Joshua Foley (Earth-616)"
+  },
+  {
+    "id": "Yellow of the Rainbow Raiders (New Earth)"
+  },
+  {
+    "id": "Ultron (Earth-616)"
+  },
+  {
+    "id": "Jacob Bolt (Earth-616)"
+  },
+  {
+    "id": "Fashima (Earth-616)"
+  },
+  {
+    "id": "Yorkie Mitchell (Earth-616)"
+  },
+  {
+    "id": "Shalak (Earth-616)"
+  }
+  ],
+  "links": [
+
+  {
+    "name": "LeTonya Charles (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Moloka Dar (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Marcia Long (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Jamal Stuart (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Tom Orzechowski (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Briquette (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Quirt (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Theodore Knight (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Seraph (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Arrakhat (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Efrain Normas (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Kalya (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Enya Wazzo (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Joshua Foley (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Yellow of the Rainbow Raiders (New Earth)",
+    "Universe": "DC"
+  },
+  {
+    "name": "Ultron (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Jacob Bolt (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Fashima (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Yorkie Mitchell (Earth-616)",
+    "Universe": "Marvel"
+  },
+  {
+    "name": "Shalak (Earth-616)",
+    "Universe": "Marvel"
+  }
+  ], 
+  "directed": false
+}
