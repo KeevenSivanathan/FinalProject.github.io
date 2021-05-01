@@ -12,9 +12,9 @@
   <body>
     <script>
       // set the dimensions and margins of the graph
-      var margin = { top: 50, right: 20, bottom: 50, left: 150 },
-        width = 1000 - margin.left - margin.right,
-        height = 6000 - margin.top - margin.bottom;
+      var margin = { top: 50, right: 120, bottom: 50, left: 150 },
+        width = 800 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
       var svg = d3
         .select("body")
@@ -24,76 +24,103 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      var xScale = d3.scaleLinear().range([0, width]);
-      var yScale = d3.scaleBand().range([height, 0]);
+      var gridSize = Math.floor(width / 24);
+      var legendElementWidth = gridSize * 2;
+      var buckets = 9;
+      colors = [
+        "#ffffd9",
+        "#edf8b1",
+        "#c7e9b4",
+        "#7fcdbb",
+        "#41b6c4",
+        "#1d91c0",
+        "#225ea8",
+        "#253494",
+        "#081d58",
+      ];
+      var years = [
+        1935,
+        1940,
+        1945,
+        1950,
+        1955,
+        1960,
+        1965,
+        1970,
+        1975,
+        1980,
+        1985,
+        1990,
+        1995,
+        2000,
+        2005,
+        2010,
+        2015,
+      ];
 
-      d3.csv("Datasets/powers.csv").then(function (data) {
-        //Adding domain to X and Y Scale
-        xScale.domain([
-          0,
-          d3.max(data, function (d) {
-            return +d["count"];
-          }),
-        ]);
+      var parseTime = d3.timeParse("%YYYY");
 
-        yScale.domain(
-          data.map(function (d) {
-            return d["power"];
-          })
-        );
+      d3.csv("Datasets/top_10.csv", function (d) {
+        return {
+          date: d3.timeParse("%Y")(d.Year),
+          appearance: +d["APPEARANCES"],
+          name: d["name"],
+        };
+      }).then(function (data) {
+        //Adding the x scale and axis
+        var xScale = d3
+          .scaleTime()
+          .domain(
+            d3.extent(data, function (d) {
+              return d.date;
+            })
+          )
+          .range([0, width]);
 
-        //Adding X Axis
-        svg
+        var xAxis = svg
           .append("g")
-          .attr("transform", "translate(5,-20)")
-          .call(d3.axisBottom(xScale));
+          .call(d3.axisBottom(xScale))
+          .attr("transform", "translate(60,515)");
 
-        //X axis label
-        var text = svg
-          .append("text")
-          .attr("class", "text")
-          .attr("x", 235)
-          .attr("y", -30)
-          .attr("text-anchor", "start")
-          .text("Count");
+        var yScale = d3
+          .scaleBand()
+          .domain(
+            data.map(function (d) {
+              return d.name;
+            })
+          )
+          .range([height, 0])
+          .padding(0.1);
 
-        //Adding Y Axis
-        svg
+        var yAxis = svg
           .append("g")
           .call(d3.axisLeft(yScale))
-          .attr("transform", "translate(0,10)");
-
-        //Y axis label
-        svg
-          .append("text")
-          .attr("class", "y label")
-          .attr("text-anchor", "end")
-          .attr("y", 0)
-          .attr("x", -20)
-          .attr("dy", ".75em")
-          .text("Power")
-          .attr("transform", "translate(-5,-19)");
+          .attr("transform", "translate(40,0)");
 
         var colorScale = d3
           .scaleSequential(d3.interpolateReds)
-          .domain(d3.extent(data, (d) => +d["count"]));
+          .domain(d3.extent(data, (d) => d.appearance));
 
-        const cellSize = 20;
+        var cards = svg.selectAll(".hour").data(data, function (d) {
+          return d.name + ":" + d.appearance;
+        });
 
-        svg
-          .selectAll("rect")
-          .data(data)
+        cards.append("title");
+
+        cards
           .enter()
           .append("rect")
-          .attr("width", cellSize)
-          .attr("height", cellSize)
-          .attr("x", (d) => xScale(+d["count"]))
-          //put the cells on top of the y increments to prevent x-axis labels overlapping
-          .attr("y", (d) => yScale(d.power) - cellSize)
-          .attr("transform", "translate(0,30)")
-          //set colors based on tuition
-          .attr("fill", (d) => colorScale(+d["count"]))
-          .style("stroke", "black");
+          .attr("x", function (d) {
+            return xScale(d.date) * gridSize;
+          })
+          .attr("y", function (d) {
+            return yScale(d.name);
+          })
+          .attr("rx", 4)
+          .attr("ry", 4)
+          .attr("width", gridSize)
+          .attr("height", yScale.bandwidth())
+          .style("fill", (d) => colorScale(+d.appearance));
       });
     </script>
   </body>
