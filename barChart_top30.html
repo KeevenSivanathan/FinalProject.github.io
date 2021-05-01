@@ -13,6 +13,20 @@
       rect:hover {
         fill: #fddb27ff;
       }
+
+      div.tooltip {
+        position: absolute;
+        text-align: center;
+        width: 60px;
+        height: 22px;
+        padding: 2px;
+        padding-top: 10px;
+        font: 12px sans-serif;
+        background: lightgray;
+        border: 0px;
+        border-radius: 8px;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
@@ -88,6 +102,13 @@
           .text("Character")
           .attr("transform", "translate(-5,-19)");
 
+        //Setting up div
+        var div = d3
+          .select("body")
+          .append("div")
+          .attr("class", "tooltip")
+          .style("opacity", 0);
+
         // append the rectangles for the bar chart
         svg
           .selectAll(".bar")
@@ -103,11 +124,17 @@
             return yScale(d.Name);
           })
           .attr("height", yScale.bandwidth())
-          .attr("transform", "translate(0,8)")
-          .append("title")
-          .text(function (d) {
-            return d.Name + " : " + d[selection];
-          });
+          .on("mouseover", function (event, d) {
+            div.transition().duration(200).style("opacity", 1);
+            div
+              .html(d[selection])
+              .style("left", event.pageX + "px")
+              .style("top", event.pageY - 28 + "px");
+          })
+          .on("mouseout", function (d) {
+            div.transition().duration(500).style("opacity", 0);
+          })
+          .attr("transform", "translate(0,8)");
       });
 
       function update(variable) {
