@@ -7,6 +7,7 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/d3-color.v2.min.js"></script>
     <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
     <style>
       div.tooltip {
@@ -29,7 +30,7 @@
       // set the dimensions and margins of the graph
       var margin = { top: 50, right: 150, bottom: 50, left: 200 },
         width = 800 - margin.left - margin.right,
-        height = 1000 - margin.top - margin.bottom;
+        height = 500 - margin.top - margin.bottom;
 
       var svg = d3
         .select("body")
@@ -39,7 +40,7 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      d3.csv("Datasets/appearances.csv", function (d) {
+      d3.csv("Datasets/top10.csv", function (d) {
         return {
           date: d3.timeParse("%Y")(d.year),
           appearance: +d["APPEARANCES"],
