@@ -1,0 +1,400 @@
+{
+  "name": "Universe",
+  "children": [
+    {
+      "name": "DC",
+      "children": [
+        {
+          "name": "GOOD",
+          "children": [
+            {
+              "name": "MALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "James Gordon (New Earth)" },
+                        { "name": "Aquaman (Arthur Curry)" },
+                        { "name": "Jason Garrick (New Earth)" },
+                        { "name": "Alfred Pennyworth (New Earth)" },
+                        { "name": "Raymond Palmer (New Earth)" },
+                        { "name": "Garfield Logan (New Earth)" },
+                        { "name": "Guy Gardner (New Earth)" },
+                        { "name": "Victor Stone (New Earth)" },
+                        { "name": "James Olsen (New Earth)" },
+                        { "name": "John Stewart (New Earth)" },
+                        { "name": "Franklin Rock (New Earth)" },
+                        { "name": "Michael Jon Carter (New Earth)" },
+                        { "name": "Harvey Bullock (New Earth)" },
+                        { "name": "John Constantine (New Earth)" },
+                        { "name": "John Henry Irons (New Earth)" },
+                        { "name": "Swamp Thing (New Earth)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Batman (Bruce Wayne)" },
+                        { "name": "Superman (Clark Kent)" },
+                        { "name": "Green Lantern (Hal Jordan)" },
+                        { "name": "Richard Grayson (New Earth)" },
+                        { "name": "Timothy Drake (New Earth)" },
+                        { "name": "Flash (Barry Allen)" },
+                        { "name": "Carter Hall (New Earth)" },
+                        { "name": "Kyle Rayner (New Earth)" },
+                        { "name": "Kon-El (New Earth)" },
+                        { "name": "Nathaniel Adam (New Earth)" },
+                        { "name": "Ronald Raymond (New Earth)" },
+                        { "name": "Red Tornado (New Earth)" },
+                        { "name": "Jefferson Pierce (New Earth)" },
+                        { "name": "William Batson (New Earth)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "Garth (New Earth)" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Alan Scott (New Earth)" },
+                        { "name": "Kent Nelson (New Earth)" },
+                        { "name": "Wesley Dodds (New Earth)" },
+                        { "name": "Albert Pratt (New Earth)" },
+                        { "name": "Theodore Knight (New Earth)" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FEMALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Wonder Woman (Diana Prince)" },
+                        { "name": "Dinah Laurel Lance (New Earth)" },
+                        { "name": "Lois Lane (New Earth)" },
+                        { "name": "Zatanna Zatara (New Earth)" },
+                        { "name": "Cassandra Sandsmark (New Earth)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "GenderTest" },
+                        { "name": "Barbara Gordon (New Earth)" },
+                        { "name": "Kara Zor-L (Earth-Two)" },
+                        { "name": "Rachel Roth (New Earth)" },
+                        { "name": "Helena Bertinelli (New Earth)" },
+                        { "name": "Beatriz da Costa (New Earth)" },
+                        { "name": "Jennifer-Lynn Hayden (New Earth)" },
+                        { "name": "Renee Montoya (New Earth)" },
+                        { "name": "Courtney Whitmore (New Earth)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "NONE" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "Kendra Saunders (New Earth)" }]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "BAD",
+          "children": [
+            {
+              "name": "MALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Alexander Luthor (New Earth)" },
+                        { "name": "Harvey Dent (New Earth)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "Joker (New Earth)" }]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "Uxas (New Earth)" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "NONE" }]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FEMALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [{ "name": "None" }]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [{ "name": "None" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "MARVEL",
+      "children": [
+        {
+          "name": "GOOD",
+          "children": [
+            {
+              "name": "MALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Captain America (Steven Rogers)" },
+                        { "name": "Iron Man (Anthony (Tony) Stark)" },
+                        { "name": "Benjamin Grimm (Earth-616)" },
+                        { "name": "Reed Richards (Earth-616)" },
+                        { "name": "Hulk (Robert Bruce Banner)" },
+                        { "name": "Jonathan Storm (Earth-616)" },
+                        { "name": "Henry McCoy (Earth-616)" },
+                        { "name": "Clinton Barton (Earth-616)" },
+                        { "name": "Matthew Murdock (Earth-616)" },
+                        { "name": "Stephen Strange (Earth-616)" },
+                        { "name": "Henry Pym (Earth-616)" },
+                        { "name": "Warren Worthington III (Earth-616)" },
+                        { "name": "Pietro Maximoff (Earth-616)" },
+                        { "name": "Norrin Radd (Earth-616)" },
+                        { "name": "Simon Williams (Earth-616)" },
+                        { "name": "Alexander Summers (Earth-616)" },
+                        { "name": "Human Torch (Android) (Earth-616)" },
+                        { "name": "Brian Braddock (Earth-616)" },
+                        { "name": "Samuel Wilson (Earth-616)" },
+                        { "name": "Volstagg (Earth-616)" },
+                        { "name": "Hogun (Earth-616)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Spider-Man (Peter Parker)" },
+                        { "name": "Robert Drake (Earth-616)" },
+                        { "name": "Piotr Rasputin (Earth-616)" },
+                        { "name": "Kurt Wagner (Earth-616)" },
+                        { "name": "Vision (Earth-616)" },
+                        { "name": "Eugene Thompson (Earth-616)" },
+                        { "name": "Samuel Guthrie (Earth-616)" },
+                        { "name": "James Buchanan Barnes (Earth-616)" },
+                        { "name": "Remy LeBeau (Earth-616)" },
+                        { "name": "Daniel Rand (Earth-616)" },
+                        { "name": "Richard Jones (Earth-616)" },
+                        { "name": "James Rhodes (Earth-616)" },
+                        { "name": "Dane Whitman (Earth-616)" },
+                        { "name": "Roberto da Costa (Earth-616)" },
+                        { "name": "Johnathon Blaze (Earth-616)" },
+                        { "name": "Marc Spector (Earth-616)" },
+                        { "name": "Thomas Raymond (Earth-616)" },
+                        { "name": "John Walker (Earth-616)" },
+                        { "name": "James Proudstar (Earth-616)" },
+                        { "name": "Jean-Paul Beaubier (Earth-616)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Charles Xavier (Earth-616)" },
+                        { "name": "Timothy Dugan (Earth-616)" },
+                        { "name": "Uatu (Earth-616)" },
+                        { "name": "Richard Rider (Earth-616)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Balder Odinson (Earth-616)" },
+                        { "name": "Fandral (Earth-616)" }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FEMALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Susan Storm (Earth-616)" },
+                        { "name": "Ororo Munroe (Earth-616)" },
+                        { "name": "Wanda Maximoff (Earth-616)" },
+                        { "name": "Janet van Dyne (Earth-616)" },
+                        { "name": "Natalia Romanova (Earth-616)" },
+                        { "name": "Carol Danvers (Earth-616)" },
+                        { "name": "Jennifer Walters (Earth-616)" },
+                        { "name": "Crystalia Amaquelin (Earth-616)" },
+                        { "name": "Elizabeth Ross (Earth-616)" },
+                        { "name": "Medusalith Amaquelin (Earth-616)" },
+                        { "name": "Alison Blaire (Earth-616)" },
+                        { "name": "Greer Grant (Earth-616)" },
+                        { "name": "Sharon Carter (Earth-616)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Katherine Pryde (Earth-616)" },
+                        { "name": "Rogue (Anna Marie) (Earth-616)" },
+                        { "name": "Patricia Walker (Earth-616)" },
+                        { "name": "Jessica Drew (Earth-616)" },
+                        { "name": "Rahne Sinclair (Earth-616)" },
+                        { "name": "Lorna Dane (Earth-616)" },
+                        { "name": "Jubilation Lee (Earth-616)" },
+                        { "name": "Danielle Moonstar (Earth-616)" },
+                        { "name": "Barbara Morse (Earth-616)" },
+                        { "name": "Brunnhilde (Earth-616)" },
+                        { "name": "Monica Rambeau (Earth-616)" },
+                        { "name": "Heather Douglas (Earth-616)" },
+                        { "name": "Tabitha Smith (Earth-616)" },
+                        { "name": "Neena Thurman (Earth-616)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "Jean Grey (Earth-616)" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "NONE" }]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "BAD",
+          "children": [
+            {
+              "name": "MALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [
+                        { "name": "Victor von Doom (Earth-616)" },
+                        { "name": "Norman Osborn (Earth-616)" },
+                        { "name": "Wilson Fisk (Earth-616)" }
+                      ]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [
+                        { "name": "Sabretooth (Victor Creed)" },
+                        { "name": "MacDonald Gargan (Earth-616)" }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "Johann Shmidt (Earth-616)" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "NONE" }]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "FEMALE",
+              "children": [
+                {
+                  "name": "ALIVE",
+                  "children": [
+                    {
+                      "name": "PUBLIC IDENTITY",
+                      "children": [{ "name": "Felicia Hardy (Earth-616)" }]
+                    },
+                    {
+                      "name": "SECRET IDENTITY",
+                      "children": [{ "name": "Raven Darkholme (Earth-616)" }]
+                    }
+                  ]
+                },
+                {
+                  "name": "DEAD",
+                  "children": [{ "name": "None" }]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

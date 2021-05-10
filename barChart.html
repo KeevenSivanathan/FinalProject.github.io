@@ -8,10 +8,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Bar Chart (Full Dataset)</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style type="text/css">
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Bebas Neue", cursive;
+      }
       rect:hover {
-        fill: #d7bb2b;
+        fill: #fddb27ff;
       }
 
       div.tooltip {
@@ -27,10 +45,25 @@
         border-radius: 8px;
         pointer-events: none;
       }
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+
+      #toggle {
+        margin-left: 450px;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
+    <a href="index.html" class="w3-button w3-light-grey"
+      ><i class="fa fa-home"></i>HOME</a
+    >
+    <h1>Character Ability / Skillset Barchart</h1>
     <div id="toggle">
+      <h3>Click to change category</h3>
       <button onclick="update('Intelligence')">Intelligence</button>
       <button onclick="update('Speed')">Speed</button>
       <button onclick="update('Power')">Power</button>
@@ -41,9 +74,9 @@
     </div>
     <script>
       // set the dimensions and margins of the graph
-      var margin = { top: 150, right: 20, bottom: 30, left: 150 },
-        width = 850 - margin.left - margin.right,
-        height = 8000 - margin.top - margin.bottom;
+      var margin = { top: 150, right: 50, bottom: 30, left: 220 },
+        width = 1000 - margin.left - margin.right,
+        height = 10000 - margin.top - margin.bottom;
 
       var svg = d3
         .select("body")
@@ -93,12 +126,13 @@
           .text(function (d) {
             return "Category : " + selection;
           })
-          .attr("font-size", 19);
+          .attr("font-size", 25);
 
         //Adding Y Axis
         svg
           .append("g")
           .call(d3.axisLeft(yScale))
+          .attr("font-size", "16px")
           .attr("transform", "translate(0,10)");
 
         //Y axis label
@@ -110,6 +144,7 @@
           .attr("x", -20)
           .attr("dy", ".75em")
           .text("Character")
+          .attr("font-size", 20)
           .attr("transform", "translate(-5,-19)");
 
         //Setting up div
@@ -126,7 +161,7 @@
           .enter()
           .append("rect")
           .attr("class", "bar")
-          .attr("fill", "#da1f28")
+          .attr("fill", "#00B1D2FF")
           .attr("width", function (d) {
             return xScale(+d[selection]);
           })
@@ -165,6 +200,10 @@
       <button onclick="update('Durability')">Durability</button>
       <button onclick="update('Combat')">Combat</button>
       <button onclick="update('Overall')">Overall</button>
+      <h3>Click to change category</h3>
     </div>
+    <a href="index.html" class="w3-button w3-light-grey"
+      ><i class="fa fa-home"></i>HOME</a
+    >
   </body>
 </html>

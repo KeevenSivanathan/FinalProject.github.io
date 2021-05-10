@@ -9,7 +9,25 @@
     <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
     <script src="https://d3js.org/d3-scale-chromatic.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
     <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Bebas Neue", cursive;
+      }
       div.tooltip {
         position: absolute;
         text-align: center;
@@ -23,13 +41,34 @@
         border-radius: 8px;
         pointer-events: none;
       }
+
+      div.w3-display-container {
+        font-size: 20px;
+      }
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
     </style>
   </head>
   <body>
+    <a href="index.html" class="w3-button w3-light-grey"
+    ><i class="fa fa-home"></i>HOME</a
+  >
+    <h1>Comicbook Character Number of Appearances</h1>
+    <div class="w3-display-container">
+      <p>
+        <ol>
+            <li>Hover over the colored rectangles to see their value</li>
+            <li>Click here to see the <a href='heatmap.html'>full sample</a></li>
+        </ol>
+      </p>
+    </div>
     <script>
       // set the dimensions and margins of the graph
-      var margin = { top: 50, right: 150, bottom: 50, left: 200 },
-        width = 800 - margin.left - margin.right,
+      var margin = { top: 50, right: 180, bottom: 50, left: 400 },
+        width = 1000 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
 
       var svg = d3
@@ -40,7 +79,7 @@
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-      d3.csv("Datasets/top10.csv", function (d) {
+      d3.csv("Datasets/appearances_top10.csv", function (d) {
         return {
           date: d3.timeParse("%Y")(d.year),
           appearance: +d["APPEARANCES"],
@@ -63,6 +102,16 @@
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
 
+        //X axis label
+        var x_label = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", 200)
+          .attr("y", 450)
+          .attr("text-anchor", "start")
+          .text('Year')
+          .attr("font-size", 19);
+
         // Build Y scales and axis
         var yScale = d3
           .scaleBand()
@@ -74,10 +123,20 @@
           )
           .padding(0.01);
 
-        svg.append("g").call(d3.axisLeft(yScale));
+        svg.append("g").call(d3.axisLeft(yScale)).attr('font-size',"16px");
+
+        //y axis label
+        var y_label = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", -90)
+          .attr("y", -10)
+          .attr("text-anchor", "start")
+          .text('Character')
+          .attr("font-size", 20);
 
         var colorScale = d3
-          .scaleSequential(d3.interpolateReds)
+          .scaleSequential(d3.interpolateYlGnBu)
           .domain(d3.extent(data, (d) => d.appearance));
 
         //Color Legend
@@ -87,7 +146,7 @@
           .title("Appearances")
           .titleWidth(100)
           .scale(colorScale);
-        svg.append("g").attr("transform", "translate(500,0)").call(legendColor);
+        svg.append("g").attr("transform", "translate(500,0)").call(legendColor).attr('font-size',"18px");
 
         //Setting up div
         var div = d3

@@ -7,9 +7,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Bar Chart (Top 30)</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <title>Character Statistics</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    />
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
     <style type="text/css">
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Bebas Neue", cursive;
+      }
       rect:hover {
         fill: #fddb27ff;
       }
@@ -20,20 +38,47 @@
         width: 60px;
         height: 22px;
         padding: 2px;
-        padding-top: 10px;
+        padding-top: 8px;
         font: 12px sans-serif;
         background: lightgray;
         border: 0px;
         border-radius: 8px;
         pointer-events: none;
       }
+
+      div.w3-display-container{
+        font-size:20px;
+      }
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
+
+      #toggle {
+        margin-left: 450px;
+      }
     </style>
   </head>
   <body>
+    <a href="index.html" class="w3-button w3-light-grey"
+        ><i class="fa fa-home"></i>HOME</a
+      >
+    <h1>Character Ability / Skillset Barchart</h1>
+    <div class="w3-display-container">
+      <p>
+        <ol>
+          <li>Click on the different buttons to change the skillset we are looking
+            at</li>
+            <li>Hover over the bars to see the value</li>
+            <li>Click here to see the <a href='barChart.html'>full sample</a></li>
+        </ol>
+      </p>
+    </div>
     <script>
       var margin = { top: 80, right: 180, bottom: 80, left: 180 },
         width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+        height = 590 - margin.top - margin.bottom;
 
       var svg = d3
         .select("body")
@@ -83,12 +128,14 @@
           .attr("text-anchor", "start")
           .text(function (d) {
             return "Category : " + selection;
-          });
+          })
+          .attr('font-size',22);
 
         //Adding Y Axis
         svg
           .append("g")
           .call(d3.axisLeft(yScale))
+          .attr('font-size',"16px")
           .attr("transform", "translate(0,10)");
 
         //Y axis label
@@ -100,6 +147,7 @@
           .attr("x", -20)
           .attr("dy", ".75em")
           .text("Character")
+          .attr('font-size',20)
           .attr("transform", "translate(-5,-19)");
 
         //Setting up div
@@ -135,6 +183,9 @@
             div.transition().duration(500).style("opacity", 0);
           })
           .attr("transform", "translate(0,8)");
+          
+          
+          
       });
 
       function update(variable) {
@@ -148,6 +199,7 @@
       }
     </script>
     <div id="toggle">
+      <h3>Click to change category</h3>
       <button onclick="update('Intelligence')">Intelligence</button>
       <button onclick="update('Speed')">Speed</button>
       <button onclick="update('Power')">Power</button>

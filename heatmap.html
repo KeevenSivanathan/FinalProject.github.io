@@ -8,7 +8,26 @@
     <script src="https://d3js.org/d3-color.v2.min.js"></script>
     <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+    />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
+      body,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Bebas Neue", cursive;
+      }
+
       div.tooltip {
         position: absolute;
         text-align: center;
@@ -22,14 +41,23 @@
         border-radius: 8px;
         pointer-events: none;
       }
+
+      svg {
+        display: block;
+        margin: 0 auto;
+      }
     </style>
   </head>
   <body>
+    <a href="index.html" class="w3-button w3-light-grey"
+      ><i class="fa fa-home"></i>HOME</a
+    >
+    <h1>Comicbook Character Number of Appearances</h1>
     <script>
       // set the dimensions and margins of the graph
-      var margin = { top: 50, right: 150, bottom: 50, left: 200 },
-        width = 800 - margin.left - margin.right,
-        height = 1000 - margin.top - margin.bottom;
+      var margin = { top: 50, right: 250, bottom: 50, left: 290 },
+        width = 1000 - margin.left - margin.right,
+        height = 2000 - margin.top - margin.bottom;
 
       var svg = d3
         .select("body")
@@ -62,6 +90,16 @@
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
 
+        //X axis label
+        var x_label = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", 200)
+          .attr("y", 1950)
+          .attr("text-anchor", "start")
+          .text("Year")
+          .attr("font-size", 22);
+
         // Build Y scales and axis
         var yScale = d3
           .scaleBand()
@@ -73,10 +111,20 @@
           )
           .padding(0.01);
 
-        svg.append("g").call(d3.axisLeft(yScale));
+        svg.append("g").call(d3.axisLeft(yScale)).attr("font-size", "16px");
+
+        //y axis label
+        var y_label = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", -90)
+          .attr("y", -10)
+          .attr("text-anchor", "start")
+          .text("Character")
+          .attr("font-size", 21);
 
         var colorScale = d3
-          .scaleSequential(d3.interpolateReds)
+          .scaleSequential(d3.interpolateYlGnBu)
           .domain(d3.extent(data, (d) => d.appearance));
 
         //Color Legend
@@ -86,7 +134,11 @@
           .title("Appearances")
           .titleWidth(100)
           .scale(colorScale);
-        svg.append("g").attr("transform", "translate(500,0)").call(legendColor);
+        svg
+          .append("g")
+          .attr("transform", "translate(500,0)")
+          .call(legendColor)
+          .attr("font-size", "20px");
 
         //Setting up div
         var div = d3
