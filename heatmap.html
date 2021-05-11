@@ -32,11 +32,11 @@
         position: absolute;
         text-align: center;
         width: 60px;
-        height: 22px;
+        height: 25px;
         padding: 2px;
-        padding-top: 10px;
-        font: 12px sans-serif;
-        background: lightgray;
+        padding-top: 5px;
+        font: 14px sans-serif;
+        background: lightgrey;
         border: 0px;
         border-radius: 8px;
         pointer-events: none;
@@ -85,10 +85,17 @@
           )
           .padding(0.01);
 
+        //Bottom X Axis
         svg
           .append("g")
           .attr("transform", "translate(0," + height + ")")
           .call(d3.axisBottom(xScale).tickFormat(d3.timeFormat("%Y")));
+
+        //Top X Axis
+        svg
+          .append("g")
+          .attr("transform", "translate(0,0)")
+          .call(d3.axisTop(xScale).tickFormat(d3.timeFormat("%Y")));
 
         //X axis label
         var x_label = svg
@@ -96,6 +103,15 @@
           .attr("class", "text")
           .attr("x", 200)
           .attr("y", 1950)
+          .attr("text-anchor", "start")
+          .text("Year")
+          .attr("font-size", 22);
+
+        var x_label2 = svg
+          .append("text")
+          .attr("class", "text")
+          .attr("x", 200)
+          .attr("y", -25)
           .attr("text-anchor", "start")
           .text("Year")
           .attr("font-size", 22);
@@ -163,6 +179,7 @@
           .attr("width", xScale.bandwidth())
           .attr("height", yScale.bandwidth())
           .attr("transform", "translate(0,0)")
+          // .attr("stroke", "black")
           .style("fill", function (d) {
             return colorScale(+d.appearance);
           })
