@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Interactive Treemap</title>
+    <title>Character Tree</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <link
       rel="stylesheet"
@@ -86,7 +86,7 @@
 
       // load the external data
       d3.json("Datasets/charmap_tree.json").then(function (treeData) {
-        //  assigns the data to a hierarchy using parent-child relationships
+        
         var root = d3.hierarchy(treeData, function (d) {
           return d.children;
         });
@@ -121,14 +121,12 @@
             d.y = d.depth * 180;
           });
 
-          // ****************** Nodes section ***************************
-
-          // Update the nodes...
+          // Update the nodes
           var node = svg.selectAll("g.node").data(nodes, function (d) {
             return d.id || (d.id = ++i);
           });
 
-          // Enter any new modes at the parent's previous position.
+          // Enter any new nodes at the parent's previous position.
           var nodeEnter = node
             .enter()
             .append("g")
@@ -197,9 +195,7 @@
           // On exit reduce the opacity of text labels
           nodeExit.select("text").style("fill-opacity", 1e-6);
 
-          // ****************** links section ***************************
-
-          // Update the links...
+          // Update the links
           var link = svg.selectAll("path.link").data(links, function (d) {
             return d.id;
           });

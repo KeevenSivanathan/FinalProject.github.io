@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Heatmap</title>
+    <title>Character Appearances</title>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <script src="https://d3js.org/d3-color.v2.min.js"></script>
     <script src="https://d3js.org/d3-interpolate.v2.min.js"></script>
@@ -107,6 +107,7 @@
           .text("Year")
           .attr("font-size", 22);
 
+        //Top x axis label
         var x_label2 = svg
           .append("text")
           .attr("class", "text")
@@ -179,10 +180,10 @@
           .attr("width", xScale.bandwidth())
           .attr("height", yScale.bandwidth())
           .attr("transform", "translate(0,0)")
-          // .attr("stroke", "black")
           .style("fill", function (d) {
             return colorScale(+d.appearance);
           })
+          //Tooltip
           .on("mouseover", function (event, d) {
             div.transition().duration(200).style("opacity", 1);
             div
